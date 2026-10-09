@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html class="light" lang="nl">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="assets/favicon.svg" rel="icon" type="image/svg+xml">
+  <title>Juliana Top Investment N.V. Obligatielening 2026–2032 | Officiële Investeringsportal</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:wght@500;600;700&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="js/tailwind-config.js"></script>
+  <!-- Local Stylesheets -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body
+  class="bg-background text-on-surface antialiased selection:bg-secondary-fixed selection:text-primary min-h-screen flex flex-col font-body-md text-body-md"
+  style="background-color: rgb(248, 246, 242); color: rgb(20, 23, 26);">
+  <!-- ================= TOP APP BAR / SHARED COMPONENT ================= -->
+  <header
+    class="sticky top-0 z-[60] bg-[#f8f6f2]/90 backdrop-blur-md border-b border-[#e6e1d8] shadow-sm transition-all duration-300">
+    <div class="flex items-center justify-between w-full px-6 lg:px-16 max-w-[1360px] mx-auto h-[72px] gap-6">
+
+      <!-- Left: Logo -->
+      <a class="flex items-center gap-3 group flex-shrink-0" href="#">
+        <div
+          class="w-9 h-9 bg-gradient-to-br from-[#1a1c1e] to-[#2d3135] text-[#d9cfb5] flex items-center justify-center rounded shadow-md group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-0.5">
+          <span class="font-['IBM_Plex_Serif',serif] font-bold text-base tracking-tighter">JTI</span>
+        </div>
+        <div class="flex flex-col hidden sm:flex">
+          <span
+            class="font-['IBM_Plex_Serif',serif] text-sm font-bold tracking-widest text-stone-900 uppercase leading-none">
+            JULIANA TOP INVESTMENT
+          </span>
+          <span class="text-[8px] tracking-[0.18em] text-[#8c7343] uppercase mt-0.5 font-semibold">
+            Institutional Capital &amp; Bonds
+          </span>
+        </div>
+      </a>
+
+      <!-- Center: Tab Navigation -->
+      <nav class="hidden lg:flex items-center gap-1 overflow-x-auto flex-1 justify-center" aria-label="Hoofdnavigatie">
+        <button
+          class="tab-btn active border-b-2 border-[#8c7343] text-stone-900 whitespace-nowrap py-2 px-3 text-sm font-bold transition-colors rounded-sm"
+          data-target="obligatiestructuur">
+          Tranche-Indeling
+        </button>
+        <button
+          class="tab-btn border-b-2 border-transparent text-stone-500 hover:text-stone-800 hover:bg-stone-100 whitespace-nowrap py-2 px-3 text-sm font-medium transition-colors rounded-sm"
+          data-target="rendement">
+          Voorwaarden &amp; Kalender
+        </button>
+        <button
+          class="tab-btn border-b-2 border-transparent text-stone-500 hover:text-stone-800 hover:bg-stone-100 whitespace-nowrap py-2 px-3 text-sm font-medium transition-colors rounded-sm"
+          data-target="inschrijven">
+          Direct Deelnemen
+        </button>
+        <button
+          class="tab-btn border-b-2 border-transparent text-stone-500 hover:text-stone-800 hover:bg-stone-100 whitespace-nowrap py-2 px-3 text-sm font-medium transition-colors rounded-sm"
+          data-target="over-ons">
+          Over Ons
+        </button>
+      </nav>
+
+      <!-- Right: CTA -->
+      <a class="tab-link flex-shrink-0 inline-flex items-center gap-2 bg-[#1a1c1e] hover:bg-[#2d3135] text-[#f8f6f2] text-sm font-semibold px-5 py-2.5 rounded transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
+        href="#inschrijven" data-target="inschrijven">
+        <span class="hidden sm:inline">Contact Advisor</span>
+        <span class="material-symbols-outlined text-[16px]">headset_mic</span>
+      </a>
+
+      <button id="mobile-menu-toggle" type="button"
+        class="lg:hidden inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded border border-stone-300 text-stone-900 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-[#8c7343]"
+        aria-label="Open navigatiemenu" aria-controls="mobile-nav" aria-expanded="false">
+        <span id="mobile-menu-icon" class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+
+    </div>
+    <nav id="mobile-nav" class="hidden lg:hidden absolute top-full inset-x-0 border-b border-[#e6e1d8] bg-[#f8f6f2] p-3 shadow-lg"
+      aria-label="Mobiele navigatie">
+      <button class="tab-btn active w-full rounded px-4 py-3 text-left text-sm font-bold text-stone-900 hover:bg-stone-100"
+        data-target="obligatiestructuur">Tranche-Indeling</button>
+      <button class="tab-btn w-full rounded px-4 py-3 text-left text-sm font-medium text-stone-600 hover:bg-stone-100"
+        data-target="rendement">Voorwaarden &amp; Kalender</button>
+      <button class="tab-btn w-full rounded px-4 py-3 text-left text-sm font-medium text-stone-600 hover:bg-stone-100"
+        data-target="inschrijven">Direct Deelnemen</button>
+      <button class="tab-btn w-full rounded px-4 py-3 text-left text-sm font-medium text-stone-600 hover:bg-stone-100"
+        data-target="over-ons">Over Ons</button>
+    </nav>
+  </header>
+  <!-- ================= SOVEREIGN HERO SECTION ================= -->
+  <section class="bg-[#fbfbfa] border-b border-stone-200 py-16 lg:py-24 relative overflow-hidden"
+    style="background-color: rgb(245, 242, 235); border-bottom: 1px solid rgb(230, 225, 216);">
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-end overflow-hidden"><img
+        alt="Juliana Top Investment Watermark"
+        class="w-[550px] lg:w-[720px] max-w-none mix-blend-multiply translate-x-12 lg:translate-x-20 object-contain select-none opacity-40"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-xegDuBZT9mkVQWvKDVOn6i7m23nWIgeWOJ_SP62pR5yJWPBSSRfdPBuMnup5YKk8wQMIjT4q17KMzMqy578ace62epQwWfwzkPjPnrKPk5FXxuxOooVG0wbRLr18ShQoAkuOsjaWVYiTnETAp3P8Hm02dWidDAVvDQ_VLY7oBxUtaS-ktem1mngs7Qju7S6-WSM3hwobmBdatB_OQIBdR1acd9sL10HdoAFORIHcc8Gk0I5E0LY"
+        style="mix-blend-mode: multiply; pointer-events: none;"></div>
+    <div class="max-w-[1360px] mx-auto px-6 lg:px-16 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-8 space-y-6">
+          <div class="flex items-center gap-4">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#f4f3ef] border border-stone-300 rounded text-[11px] font-bold text-stone-800 tracking-wider uppercase"
+              style="background-color: rgb(237, 232, 221); border-color: rgb(217, 210, 195); color: rgb(31, 35, 39);">
+              <span class="material-symbols-outlined text-[16px] text-amber-700"
+                data-icon="verified">verified</span><span class="">EXCLUSIEVE PRIVATE PLACEMENT</span>
+            </div>
+          </div>
+          <div class="pt-2">
+            <h1
+              class="font-['IBM_Plex_Serif',serif] text-4xl lg:text-5xl lg:leading-[1.18] font-medium text-stone-900 tracking-tight">
+              Juliana Top Investment<br>Obligatie 2026-2032</h1>
+          </div>
+          <p class="text-base lg:text-lg text-stone-600 max-w-xl leading-relaxed">Een solide investering met een
+            aantrekkelijk rendement per jaar, uitgegeven en gestationeerd rechtstreeks door Juliana Top Investment N.V.
+            via haar institutionele kanalen.</p>
+          <div class="flex flex-wrap items-center gap-4 pt-2"><a
+              class="tab-link inline-flex items-center gap-2 bg-stone-950 hover:bg-stone-800 text-white font-semibold text-sm px-6 py-3 rounded transition-colors shadow-sm"
+              href="#inschrijven" data-target="inschrijven"><span class="">Inschrijven op Obligatie</span><span
+                class="material-symbols-outlined text-[18px]">arrow_forward</span></a><button id="open-video"
+              class="inline-flex items-center justify-center gap-2 bg-white hover:bg-stone-50 text-stone-900 font-semibold text-sm px-6 py-3 border border-stone-300 rounded transition-colors group shadow-sm">
+              <span
+                class="material-symbols-outlined text-secondary text-[20px] group-hover:scale-110 transition-transform">play_circle</span>
+              <span>Bekijk Introductievideo</span>
+            </button></div>
+          <div class="pt-4">
+            <div
+              class="inline-flex flex-col sm:flex-row sm:items-center gap-6 p-4 rounded-lg border border-stone-300/80 bg-white/70 shadow-sm max-w-xl"
+              style="backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.72); border-color: rgb(223, 217, 204);">
+              <div class="flex items-center gap-3 pr-0 sm:pr-6 sm:border-r border-stone-200"><span
+                  class="material-symbols-outlined text-secondary text-2xl"
+                  data-icon="hourglass_top">hourglass_top</span>
+                <div><span
+                    class="block text-[10px] font-bold text-stone-500 uppercase tracking-wider">Looptijd</span><span
+                    class="text-stone-900 font-bold text-sm lg:text-base">6 Jaar (2026–2032)</span></div>
+              </div>
+              <div class="flex-1 min-w-[200px]">
+                <div class="flex flex-col gap-1"><span
+                    class="text-stone-600 text-[11px] font-bold uppercase tracking-wider">Allocatie Voortgang</span>
+                  <div class="flex items-baseline justify-between"><span class="text-[#99772c] font-bold text-xs">82%
+                      Geplaatst</span></div>
+                  <div class="w-full h-2 bg-stone-200/90 rounded-full overflow-hidden flex mt-0.5">
+                    <div class="bg-[#795d21] h-full rounded-full"
+                      style="width: 82%; background-color: rgb(184, 151, 88);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LOCAL EQUITY 2 PROJECT OVERVIEW ================= -->
+  <section class="border-b border-[#e6e1d8] bg-white py-14 lg:py-20" aria-labelledby="local-equity-title">
+    <div class="mx-auto max-w-[1360px] px-6 lg:px-16">
+      <div class="mx-auto mb-10 max-w-3xl text-center">
+        <span class="mb-2 block text-label-caps font-label-caps uppercase tracking-widest text-secondary">Strategische investering in Suriname</span>
+        <h2 id="local-equity-title" class="font-['IBM_Plex_Serif',serif] text-3xl font-medium tracking-tight text-stone-900 lg:text-4xl">Local Equity 2</h2>
+        <p class="mt-4 text-base leading-relaxed text-stone-600 lg:text-lg">
+          Juliana Top Investment wil kleine en middelgrote Surinaamse ondernemingen ondersteunen die local content mogelijk maken binnen de groeiende olie- en gassector. De beoogde kapitaalallocatie is gericht op duurzame groei en diversificatie van de lokale economie.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-lg border border-[#e6e1d8] bg-[#f8f6f2] p-5 text-center">
+          <span class="mb-2 block text-xs font-bold uppercase tracking-wider text-stone-500">Obligatiedoel • USD</span>
+          <strong class="block font-['IBM_Plex_Serif',serif] text-2xl font-semibold text-stone-900">Min. USD 3 miljoen</strong>
+          <span class="mt-1 block text-sm text-stone-600">Beoogde minimale opbrengst</span>
+        </div>
+        <div class="rounded-lg border border-[#e6e1d8] bg-[#f8f6f2] p-5 text-center">
+          <span class="mb-2 block text-xs font-bold uppercase tracking-wider text-stone-500">Obligatiedoel • EUR</span>
+          <strong class="block font-['IBM_Plex_Serif',serif] text-2xl font-semibold text-stone-900">Min. EUR 2 miljoen</strong>
+          <span class="mt-1 block text-sm text-stone-600">Beoogde minimale opbrengst</span>
+        </div>
+        <div class="rounded-lg border border-[#e6e1d8] bg-[#f8f6f2] p-5 text-center">
+          <span class="mb-2 block text-xs font-bold uppercase tracking-wider text-stone-500">Projectraming</span>
+          <strong class="block font-['IBM_Plex_Serif',serif] text-2xl font-semibold text-stone-900">USD 50 miljoen</strong>
+          <span class="mt-1 block text-sm text-stone-600">Totale geraamde investering</span>
+        </div>
+        <div class="rounded-lg border border-[#e6e1d8] bg-[#f8f6f2] p-5 text-center">
+          <span class="mb-2 block text-xs font-bold uppercase tracking-wider text-stone-500">Beoogde deelname JTI</span>
+          <strong class="block font-['IBM_Plex_Serif',serif] text-2xl font-semibold text-stone-900">Max. 30%</strong>
+          <span class="mt-1 block text-sm text-stone-600">Maximaal USD 15 miljoen</span>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-8 max-w-3xl text-center">
+        <p class="mb-0 text-sm leading-relaxed text-stone-500">De obligatielening heeft een looptijd van zes jaar en start op 2 november 2026. De opbrengsten zijn bedoeld ter ondersteuning van de verdere groei van lokale ondernemingen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3: VOLLEDIG OVERZICHT VAN OBLIGATIEKLASSEN (A t/m F) ================= -->
+  <section class="py-space-xl bg-surface tab-content block" id="obligatiestructuur"
+    style="background-color: rgb(248, 246, 242);">
+    <div class="max-w-[1360px] mx-auto px-margin-desktop">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-space-xl">
+        <span class="text-label-caps font-label-caps text-secondary uppercase tracking-widest block mb-2">Officiële
+          Tranche-Indeling</span>
+        <h2 class="text-headline-lg font-headline-lg text-primary tracking-tight">Volledig Overzicht van
+          Obligatieklassen (A t/m F)</h2>
+        <p class="text-body-md font-body-md text-on-surface-variant mt-2">De obligatie-uitgifte 2026–2032 is
+          onderverdeeld in drie afgestemde investeringsniveaus met vaste rendementen in zowel EURO als USD valuta.</p>
+      </div>
+      <!-- Category 1: Kleinschalig (Klasse A & B) -->
+      <div class="mb-space-xl">
+        <div class="flex items-center justify-between mb-4 border-b border-outline-variant pb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary" data-icon="savings">savings</span>
+            <h3 class="text-title-lg font-title-lg text-primary">Categorie 1: Klasse A &amp; B (Kleinschalig)</h3>
+          </div>
+          <span
+            class="text-label-caps font-label-caps bg-surface-container-high px-2 py-1 rounded text-on-surface-variant">Doelgroep:
+            Particuliere spaarders en eerste investeerders</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+          <!-- Klasse A (EUR) -->
+          <div
+            class="bg-surface-container-lowest p-space-lg rounded border border-outline-variant relative border-t-4 border-t-secondary hover:shadow-md transition-shadow">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-label-caps font-label-caps text-secondary uppercase font-bold tracking-wider">Klasse A
+                  • Eurozone</span>
+                <h4 class="text-headline-md font-headline-md text-primary mt-1">14,25% <span
+                    class="text-body-md font-body-md text-on-surface-variant">per jaar</span></h4>
+              </div>
+              <span
+                  class="px-2 py-1 bg-surface-container-low text-primary font-label-numeric text-label-numeric border border-outline-variant rounded">EUR</span>
+            </div>
+            <div class="space-y-2 border-t border-outline-variant pt-3 mb-4 text-body-sm font-body-sm">
+              <div class="flex justify-between"><span class="text-on-surface-variant">Minimumbedrag:</span> <strong
+                  class="text-primary font-label-numeric">EUR 100</strong></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Uitkering:</span> <span
+                  class="text-primary">Halfjaarlijks op 2 Mei &amp; 2 Nov</span></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Looptijd:</span> <span
+                  class="text-primary">6 Jaar (Aflossing 2032)</span></div>
+            </div>
+          </div>
+          <!-- Klasse B (USD) -->
+          <div
+            class="bg-surface-container-lowest p-space-lg rounded border border-outline-variant relative border-t-4 border-t-secondary-fixed-dim hover:shadow-md transition-shadow">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-label-caps font-label-caps text-secondary uppercase font-bold tracking-wider">Klasse B
+                  • USD Valuta</span>
+                <h4 class="text-headline-md font-headline-md text-primary mt-1">14,00% <span
+                    class="text-body-md font-body-md text-on-surface-variant">per jaar</span></h4>
+              </div>
+              <span
+                  class="px-2 py-1 bg-surface-container-low text-primary font-label-numeric text-label-numeric border border-outline-variant rounded">USD</span>
+            </div>
+            <div class="space-y-2 border-t border-outline-variant pt-3 mb-4 text-body-sm font-body-sm">
+              <div class="flex justify-between"><span class="text-on-surface-variant">Minimumbedrag:</span> <strong
+                  class="text-primary font-label-numeric">USD 100</strong></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Uitkering:</span> <span
+                  class="text-primary">Halfjaarlijks op 2 Mei &amp; 2 Nov</span></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Looptijd:</span> <span
+                  class="text-primary">6 Jaar (Aflossing 2032)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Category 2: Middenschalig (Klasse C & D) -->
+      <div class="mb-space-xl">
+        <div class="flex items-center justify-between mb-4 border-b border-outline-variant pb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary" data-icon="trending_up">trending_up</span>
+            <h3 class="text-title-lg font-title-lg text-primary">Categorie 2: Klasse C &amp; D (Middenschalig)</h3>
+          </div>
+          <span
+            class="text-label-caps font-label-caps bg-surface-container-high px-2 py-1 rounded text-on-surface-variant">Doelgroep:
+            MKB, professionals en actieve beleggers</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+          <!-- Klasse C (EUR) -->
+          <div
+            class="bg-surface-container-lowest p-space-lg rounded border border-outline-variant relative border-t-4 border-t-secondary hover:shadow-md transition-shadow">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-label-caps font-label-caps text-secondary uppercase font-bold tracking-wider">Klasse C
+                  • Eurozone</span>
+                <h4 class="text-headline-md font-headline-md text-primary mt-1">16,25% <span
+                    class="text-body-md font-body-md text-on-surface-variant">per jaar</span></h4>
+              </div>
+              <span
+                  class="px-2 py-1 bg-surface-container-low text-primary font-label-numeric text-label-numeric border border-outline-variant rounded">EUR</span>
+            </div>
+            <div class="space-y-2 border-t border-outline-variant pt-3 mb-4 text-body-sm font-body-sm">
+              <div class="flex justify-between"><span class="text-on-surface-variant">Minimumbedrag:</span> <strong
+                  class="text-primary font-label-numeric">EUR 1.000</strong></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Uitkering:</span> <span
+                  class="text-primary">Halfjaarlijks op 2 Mei &amp; 2 Nov</span></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Looptijd:</span> <span
+                  class="text-primary">6 Jaar (Aflossing 2032)</span></div>
+            </div>
+          </div>
+          <!-- Klasse D (USD) -->
+          <div
+            class="bg-surface-container-lowest p-space-lg rounded border border-outline-variant relative border-t-4 border-t-secondary-fixed-dim hover:shadow-md transition-shadow">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-label-caps font-label-caps text-secondary uppercase font-bold tracking-wider">Klasse D
+                  • USD Valuta</span>
+                <h4 class="text-headline-md font-headline-md text-primary mt-1">16,00% <span
+                    class="text-body-md font-body-md text-on-surface-variant">per jaar</span></h4>
+              </div>
+              <span
+                  class="px-2 py-1 bg-surface-container-low text-primary font-label-numeric text-label-numeric border border-outline-variant rounded">USD</span>
+            </div>
+            <div class="space-y-2 border-t border-outline-variant pt-3 mb-4 text-body-sm font-body-sm">
+              <div class="flex justify-between"><span class="text-on-surface-variant">Minimumbedrag:</span> <strong
+                  class="text-primary font-label-numeric">USD 1.000</strong></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Uitkering:</span> <span
+                  class="text-primary">Halfjaarlijks op 2 Mei &amp; 2 Nov</span></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Looptijd:</span> <span
+                  class="text-primary">6 Jaar (Aflossing 2032)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Category 3: Grootschalig (Klasse E & F) -->
+      <div>
+        <div class="flex items-center justify-between mb-4 border-b border-outline-variant pb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary" data-icon="corporate_fare">corporate_fare</span>
+            <h3 class="text-title-lg font-title-lg text-primary">Categorie 3: Klasse E &amp; F (Grootschalig)</h3>
+          </div>
+          <span
+            class="text-label-caps font-label-caps bg-surface-container-high px-2 py-1 rounded text-on-surface-variant">Doelgroep:
+            Institutionele beleggers, fondsen en vermogensbeheerders</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+          <!-- Klasse E (EUR) -->
+          <div
+            class="bg-surface-container-lowest p-space-lg rounded border border-outline-variant relative border-t-4 border-t-secondary shadow-md">
+            <div
+              class="absolute -top-3 right-6 bg-secondary-fixed text-primary px-3 py-0.5 rounded text-label-caps font-label-caps font-bold">
+              HOOGSTE RENDEMENT EUR
+            </div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-label-caps font-label-caps text-secondary uppercase font-bold tracking-wider">Klasse E
+                  • Eurozone</span>
+                <h4 class="text-headline-md font-headline-md text-primary mt-1">18,00% <span
+                    class="text-body-md font-body-md text-on-surface-variant">per jaar</span></h4>
+              </div>
+              <span
+                  class="px-2 py-1 bg-surface-container-low text-primary font-label-numeric text-label-numeric border border-outline-variant rounded">EUR</span>
+            </div>
+            <div class="space-y-2 border-t border-outline-variant pt-3 mb-4 text-body-sm font-body-sm">
+              <div class="flex justify-between"><span class="text-on-surface-variant">Minimumbedrag:</span> <strong
+                  class="text-primary font-label-numeric">EUR 10.000</strong></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Uitkering:</span> <span
+                  class="text-primary">Halfjaarlijks op 2 Mei &amp; 2 Nov</span></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Looptijd:</span> <span
+                  class="text-primary">6 Jaar (Aflossing 2032)</span></div>
+            </div>
+          </div>
+          <!-- Klasse F (USD) -->
+          <div
+            class="bg-surface-container-lowest p-space-lg rounded border border-outline-variant relative border-t-4 border-t-secondary-fixed-dim shadow-md">
+            <div
+              class="absolute -top-3 right-6 bg-secondary text-surface-container-lowest px-3 py-0.5 rounded text-label-caps font-label-caps font-bold">
+              HOOGSTE RENDEMENT USD
+            </div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-label-caps font-label-caps text-secondary uppercase font-bold tracking-wider">Klasse F
+                  • USD Valuta</span>
+                <h4 class="text-headline-md font-headline-md text-primary mt-1">17,75% <span
+                    class="text-body-md font-body-md text-on-surface-variant">per jaar</span></h4>
+              </div>
+              <span
+                  class="px-2 py-1 bg-surface-container-low text-primary font-label-numeric text-label-numeric border border-outline-variant rounded">USD</span>
+            </div>
+            <div class="space-y-2 border-t border-outline-variant pt-3 mb-4 text-body-sm font-body-sm">
+              <div class="flex justify-between"><span class="text-on-surface-variant">Minimumbedrag:</span> <strong
+                  class="text-primary font-label-numeric">USD 10.000</strong></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Uitkering:</span> <span
+                  class="text-primary">Halfjaarlijks op 2 Mei &amp; 2 Nov</span></div>
+              <div class="flex justify-between"><span class="text-on-surface-variant">Looptijd:</span> <span
+                  class="text-primary">6 Jaar (Aflossing 2032)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Tabular Comparison Breakdown -->
+      <div class="mt-space-xl bg-surface-container-lowest border border-outline-variant rounded overflow-hidden">
+        <div
+          class="px-space-lg py-3 bg-surface-container-low border-b border-outline-variant flex items-center justify-between">
+          <span class="text-label-caps font-label-caps uppercase text-primary font-bold">Overzichtstabel Klassen A t/m
+            F</span>
+          <span class="text-body-sm font-body-sm text-on-surface-variant">Vaste rente • Geen variabele opslag</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr
+                class="bg-surface-container text-primary text-label-caps font-label-caps border-b border-outline-variant">
+                <th class="py-3 px-4">Klasse</th>
+                <th class="py-3 px-4">Valuta</th>
+                <th class="py-3 px-4 text-right">Vaste Rente p.j.</th>
+                <th class="py-3 px-4 text-right">Minimum Inleg</th>
+                <th class="py-3 px-4">Frequentie</th>
+                <th class="py-3 px-4">Looptijd</th>
+                <th class="py-3 px-4 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-outline-variant text-body-sm font-body-sm">
+              <tr class="hover:bg-surface">
+                <td class="py-3 px-4 font-semibold text-primary">Klasse A</td>
+                <td class="py-3 px-4">EUR</td>
+                <td class="py-3 px-4 text-right font-label-numeric text-primary font-bold">14,25%</td>
+                <td class="py-3 px-4 text-right font-label-numeric">EUR 100</td>
+                <td class="py-3 px-4">Halfjaarlijks</td>
+                <td class="py-3 px-4">6 Jaar (2032)</td>
+                <td class="py-3 px-4 text-center"><span
+                    class="px-2 py-0.5 bg-green-100 text-green-800 text-[11px] font-bold rounded">Open</span></td>
+              </tr>
+              <tr class="hover:bg-surface">
+                <td class="py-3 px-4 font-semibold text-primary">Klasse B</td>
+                <td class="py-3 px-4">USD</td>
+                <td class="py-3 px-4 text-right font-label-numeric text-primary font-bold">14,00%</td>
+                <td class="py-3 px-4 text-right font-label-numeric">USD 100</td>
+                <td class="py-3 px-4">Halfjaarlijks</td>
+                <td class="py-3 px-4">6 Jaar (2032)</td>
+                <td class="py-3 px-4 text-center"><span
+                    class="px-2 py-0.5 bg-green-100 text-green-800 text-[11px] font-bold rounded">Open</span></td>
+              </tr>
+              <tr class="hover:bg-surface">
+                <td class="py-3 px-4 font-semibold text-primary">Klasse C</td>
+                <td class="py-3 px-4">EUR</td>
+                <td class="py-3 px-4 text-right font-label-numeric text-primary font-bold">16,25%</td>
+                <td class="py-3 px-4 text-right font-label-numeric">EUR 1.000</td>
+                <td class="py-3 px-4">Halfjaarlijks</td>
+                <td class="py-3 px-4">6 Jaar (2032)</td>
+                <td class="py-3 px-4 text-center"><span
+                    class="px-2 py-0.5 bg-green-100 text-green-800 text-[11px] font-bold rounded">Open</span></td>
+              </tr>
+              <tr class="hover:bg-surface">
+                <td class="py-3 px-4 font-semibold text-primary">Klasse D</td>
+                <td class="py-3 px-4">USD</td>
+                <td class="py-3 px-4 text-right font-label-numeric text-primary font-bold">16,00%</td>
+                <td class="py-3 px-4 text-right font-label-numeric">USD 1.000</td>
+                <td class="py-3 px-4">Halfjaarlijks</td>
+                <td class="py-3 px-4">6 Jaar (2032)</td>
+                <td class="py-3 px-4 text-center"><span
+                    class="px-2 py-0.5 bg-green-100 text-green-800 text-[11px] font-bold rounded">Open</span></td>
+              </tr>
+              <tr class="hover:bg-surface">
+                <td class="py-3 px-4 font-semibold text-primary">Klasse E</td>
+                <td class="py-3 px-4">EUR</td>
+                <td class="py-3 px-4 text-right font-label-numeric text-secondary font-bold">18,00%</td>
+                <td class="py-3 px-4 text-right font-label-numeric">EUR 10.000</td>
+                <td class="py-3 px-4">Halfjaarlijks</td>
+                <td class="py-3 px-4">6 Jaar (2032)</td>
+                <td class="py-3 px-4 text-center"><span
+                    class="px-2 py-0.5 bg-green-100 text-green-800 text-[11px] font-bold rounded">Open</span></td>
+              </tr>
+              <tr class="hover:bg-surface">
+                <td class="py-3 px-4 font-semibold text-primary">Klasse F</td>
+                <td class="py-3 px-4">USD</td>
+                <td class="py-3 px-4 text-right font-label-numeric text-secondary font-bold">17,75%</td>
+                <td class="py-3 px-4 text-right font-label-numeric">USD 10.000</td>
+                <td class="py-3 px-4">Halfjaarlijks</td>
+                <td class="py-3 px-4">6 Jaar (2032)</td>
+                <td class="py-3 px-4 text-center"><span
+                    class="px-2 py-0.5 bg-green-100 text-green-800 text-[11px] font-bold rounded">Open</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================= SECTION 4: BETALINGSVOORWAARDEN & RENTE-KALENDER ================= -->
+  <section class="py-space-xl bg-surface-container-low border-y border-outline-variant tab-content hidden"
+    id="rendement" style="background-color: rgb(243, 239, 231); border-color: rgb(226, 221, 210);">
+    <div class="max-w-[1360px] mx-auto px-margin-desktop">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+        <!-- Calendar Info -->
+        <div class="lg:col-span-6 space-y-space-md">
+          <span class="text-label-caps font-label-caps text-secondary uppercase tracking-wider block">Fiduciarische
+            Bepalingen</span>
+          <h2 class="text-headline-lg font-headline-lg text-primary tracking-tight">Algemene Betalingsvoorwaarden &amp;
+            Rente-Kalender</h2>
+          <p class="text-body-md font-body-md text-on-surface-variant">Het aflossings- en rentebeleid van Juliana Top
+            Investment N.V. is vastgelegd met strikte institutionele waarborgen voor tijdige en foutloze uitkering.</p>
+          <div class="space-y-4 pt-2">
+            <!-- Item 1 -->
+            <div class="flex items-start gap-3 bg-surface-container-lowest p-4 rounded border border-outline-variant">
+              <span class="material-symbols-outlined text-secondary text-2xl mt-0.5"
+                data-icon="event_repeat">event_repeat</span>
+              <div>
+                <h4 class="text-title-md font-title-md text-primary">Halfjaarlijkse Vaste Rente-uitkering</h4>
+                <p class="text-body-sm font-body-sm text-on-surface-variant">
+                  De vaste rentevergoeding wordt elk jaar exact op <strong class="text-primary font-semibold">2
+                    mei</strong> en <strong class="text-primary font-semibold">2 november</strong> overgemaakt op uw
+                  geregistreerde rekening.
+                </p>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="flex items-start gap-3 bg-surface-container-lowest p-4 rounded border border-outline-variant">
+              <span class="material-symbols-outlined text-secondary text-2xl mt-0.5"
+                data-icon="currency_exchange">currency_exchange</span>
+              <div>
+                <h4 class="text-title-md font-title-md text-primary">Valutabescherming &amp; Afwikkeling</h4>
+                <p class="text-body-sm font-body-sm text-on-surface-variant">
+                  Volledige valutabescherming: Rente en hoofdsom worden zonder koersomrekening rechtstreeks uitgekeerd
+                  in de gekozen inlegvaluta (EURO of USD).
+                </p>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="flex items-start gap-3 bg-surface-container-lowest p-4 rounded border border-outline-variant">
+              <span class="material-symbols-outlined text-secondary text-2xl mt-0.5"
+                data-icon="account_balance_wallet">account_balance_wallet</span>
+              <div>
+                <h4 class="text-title-md font-title-md text-primary">Volledige Hoofdsom Aflossing (Bullet)</h4>
+                <p class="text-body-sm font-body-sm text-on-surface-variant">De volledige hoofdsom (100% van de nominale
+                  waarde) wordt aan het einde van de 6-jarige looptijd in 2032 in één keer afgelost.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Visual Timeline Card -->
+        <div class="lg:col-span-6">
+          <div class="bg-surface-container-lowest p-space-lg rounded border border-outline-variant shadow-sm">
+            <h3
+              class="text-title-lg font-title-lg text-primary mb-4 pb-2 border-b border-outline-variant flex items-center justify-between">
+              <span class="">Jaarlijkse Uitbetalingscyclus</span>
+              <span
+                class="text-label-caps font-label-caps bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">2026–2032</span>
+            </h3>
+            <!-- Timeline Diagram -->
+            <div
+              class="space-y-6 relative pl-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant">
+              <!-- Timeline Point 1 -->
+              <div class="relative">
+                <span
+                  class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-secondary border-2 border-surface-container-lowest"></span>
+                <span class="text-label-caps font-label-caps text-secondary font-bold">2 MEI • HALFJAARLIJKS</span>
+                <h5 class="text-title-md font-title-md text-primary">Eerste Halfjaarlijkse Coupon</h5>
+                <p class="text-body-sm font-body-sm text-on-surface-variant">50% van de nominale jaarrente wordt
+                  bijgeschreven via uw lokale of internationale brokerrekening.</p>
+              </div>
+              <!-- Timeline Point 2 -->
+              <div class="relative">
+                <span
+                  class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-secondary border-2 border-surface-container-lowest"></span>
+                <span class="text-label-caps font-label-caps text-secondary font-bold">2 NOVEMBER • HALFJAARLIJKS</span>
+                <h5 class="text-title-md font-title-md text-primary">Tweede Halfjaarlijkse Coupon</h5>
+                <p class="text-body-sm font-body-sm text-on-surface-variant">Tweede halfjaarlijkse rentebetaling conform
+                  prospectusvoorwaarden.</p>
+              </div>
+              <!-- Timeline Point 3 -->
+              <div class="relative">
+                <span
+                  class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-primary-container border-2 border-surface-container-lowest"></span>
+                <span class="text-label-caps font-label-caps text-primary font-bold">NOVEMBER 2032 • VERVALDAG
+                  (MATURITY)</span>
+                <h5 class="text-title-md font-title-md text-primary">Finale Rente + 100% Hoofdsomaflossing</h5>
+                <p class="text-body-sm font-body-sm text-on-surface-variant">Definitieve uitkering van de laatste
+                  halfjaarlijkse coupon inclusief volledige restitutie van uw initiële inleg.</p>
+              </div>
+            </div>
+            <!-- Tax Advantage Callout -->
+            <div class="mt-6 p-3 bg-secondary-fixed/30 border border-secondary/40 rounded flex items-center gap-3">
+              <span class="material-symbols-outlined text-secondary" data-icon="policy">policy</span>
+              <span class="text-body-sm font-body-sm text-primary"><strong class="">Fiscaal Voordelig:</strong> De
+                rente-inkomsten op deze Juliana Top Investment-obligaties zijn wettelijk vrijgesteld van Surinaamse
+                bronbelasting.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================= SECTION 5: INTERACTIEVE RENDEMENTSCALCULATOR ================= -->
+  <section class="py-space-xl bg-surface tab-content hidden" id="inschrijven"
+    style="background-color: rgb(248, 246, 242);">
+    <div class="max-w-[1360px] mx-auto px-margin-desktop">
+      <div
+        class="bg-surface-container-lowest border border-outline-variant rounded-lg p-space-xl text-center shadow-sm max-w-4xl mx-auto"
+        style="background-color: rgb(252, 251, 249); border: 1px solid rgb(223, 217, 204); box-shadow: rgba(0, 0, 0, 0.06) 0px 10px 30px -10px;">
+        <span class="text-label-caps font-label-caps text-secondary uppercase tracking-widest block mb-2">Direct
+          Deelnemen</span>
+        <h2 class="text-headline-lg font-headline-lg text-primary tracking-tight mb-3">Inschrijven op de Obligatie</h2>
+        <p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto mb-space-lg leading-relaxed">Vul
+          uw gegevens in om direct deel te nemen aan deze exclusieve emissie via ons beveiligde registratieformulier.
+        </p>
+        <div class="flex justify-center items-center">
+          <button type="button" disabled aria-describedby="zoho-form-status"
+            class="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded border px-space-xl py-3.5 font-label-numeric text-label-numeric font-semibold uppercase opacity-70"
+            style="background-color: rgb(18, 20, 23); border: 1px solid rgb(184, 151, 88); color: rgb(250, 248, 244); letter-spacing: 0.05em;">
+            <span>Inschrijvingsformulier binnenkort beschikbaar</span>
+          </button>
+        </div>
+        <p id="zoho-form-status" class="mt-5 border-t border-outline-variant pt-4 text-center text-sm text-on-surface-variant">
+          De Zoho-formulierlink is nog niet ingesteld.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- ================= SECTION: OVER ONS / MISSIE ================= -->
+  <section class="py-space-xl tab-content hidden" id="over-ons" style="background-color: rgb(248, 246, 242);">
+    <div class="max-w-[1360px] mx-auto px-6 lg:px-16">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#ede8dd] border border-[#d9d2c3] rounded text-[11px] font-bold text-stone-800 tracking-wider uppercase mb-6">
+          <span class="material-symbols-outlined text-[15px] text-amber-700">public</span>
+          <span>Onze Missie & Regio</span>
+        </div>
+        <h2 class="font-['IBM_Plex_Serif',serif] text-3xl lg:text-4xl font-medium text-stone-900 tracking-tight mb-4">
+          Pioniers van Duurzame Groei in<br>Suriname &amp; Guyana
+        </h2>
+        <p class="text-stone-600 text-base lg:text-lg leading-relaxed">
+          Juliana Top Investment zet de standaard voor venture capital in de regio. Suriname positioneert zich snel als
+          een van de meest aantrekkelijke nieuwe bestemmingen voor internationale investeringen in het westelijk
+          halfrond.
+        </p>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="bg-white border border-[#e6e1d8] rounded-xl p-6 text-center shadow-sm">
+          <div class="font-['IBM_Plex_Serif',serif] text-3xl font-bold text-stone-900 mb-1">2026</div>
+          <div class="text-[11px] font-bold text-stone-500 uppercase tracking-wider">Oprichtingsjaar</div>
+        </div>
+        <div class="bg-white border border-[#e6e1d8] rounded-xl p-6 text-center shadow-sm">
+          <div class="font-['IBM_Plex_Serif',serif] text-3xl font-bold text-[#8c7343] mb-1">82%</div>
+          <div class="text-[11px] font-bold text-stone-500 uppercase tracking-wider">Obligaties Geplaatst</div>
+        </div>
+        <div class="bg-white border border-[#e6e1d8] rounded-xl p-6 text-center shadow-sm">
+          <div class="font-['IBM_Plex_Serif',serif] text-3xl font-bold text-stone-900 mb-1">6 Jr</div>
+          <div class="text-[11px] font-bold text-stone-500 uppercase tracking-wider">Looptijd Obligatie</div>
+        </div>
+        <div class="bg-white border border-[#e6e1d8] rounded-xl p-6 text-center shadow-sm">
+          <div class="font-['IBM_Plex_Serif',serif] text-3xl font-bold text-[#8c7343] mb-1">2</div>
+          <div class="text-[11px] font-bold text-stone-500 uppercase tracking-wider">Actieve Markten</div>
+        </div>
+      </div>
+
+      <!-- Main Content: Vision + Region -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-start">
+        <!-- Left: Mission text -->
+        <div class="space-y-6">
+          <h3 class="font-['IBM_Plex_Serif',serif] text-2xl font-medium text-stone-900">Waarom Suriname?</h3>
+          <p class="text-stone-600 leading-relaxed">
+            Suriname positioneert zich snel als een van de meest aantrekkelijke nieuwe bestemmingen voor internationale
+            investeringen in het westelijk halfrond — nauw verbonden met de groeibaan van buurland Guyana.
+          </p>
+          <p class="text-stone-600 leading-relaxed">
+            Ondersteund door overvloedige natuurlijke hulpbronnen, verbeterende infrastructuur en een duidelijke focus
+            op economische diversificatie, betreedt het land een nieuwe fase van industriële ontwikkeling — gedefinieerd
+            door waardecreatie, werkgelegenheid en duurzame welvaart.
+          </p>
+          <p class="text-stone-600 leading-relaxed">
+            Als investeringsfirma die zich toelegt op het aandrijven van deze transformatie, ondersteunt Juliana Top
+            Investment actief door private sector–gedreven platforms die duurzaam venture capital kanaliseren naar
+            sectoren met grote impact.
+          </p>
+        </div>
+        <!-- Right: Highlighted pillars -->
+        <div class="space-y-4">
+          <div class="flex gap-4 p-5 bg-white border border-[#e6e1d8] rounded-xl shadow-sm">
+            <div class="w-10 h-10 flex-shrink-0 bg-[#ede8dd] rounded-lg flex items-center justify-center">
+              <span class="material-symbols-outlined text-[#8c7343] text-[20px]">diamond</span>
+            </div>
+            <div>
+              <div class="font-semibold text-stone-900 mb-1">Natuurlijke Hulpbronnen</div>
+              <div class="text-stone-500 text-sm leading-relaxed">Rijke grondstoffen en energiereserves vormen de basis
+                voor langdurige economische groei.</div>
+            </div>
+          </div>
+          <div class="flex gap-4 p-5 bg-white border border-[#e6e1d8] rounded-xl shadow-sm">
+            <div class="w-10 h-10 flex-shrink-0 bg-[#ede8dd] rounded-lg flex items-center justify-center">
+              <span class="material-symbols-outlined text-[#8c7343] text-[20px]">construction</span>
+            </div>
+            <div>
+              <div class="font-semibold text-stone-900 mb-1">Infrastructuur &amp; Ontwikkeling</div>
+              <div class="text-stone-500 text-sm leading-relaxed">Verbeterende infrastructuur opent deuren voor nieuwe
+                industrieën en logistieke corridors.</div>
+            </div>
+          </div>
+          <div class="flex gap-4 p-5 bg-white border border-[#e6e1d8] rounded-xl shadow-sm">
+            <div class="w-10 h-10 flex-shrink-0 bg-[#ede8dd] rounded-lg flex items-center justify-center">
+              <span class="material-symbols-outlined text-[#8c7343] text-[20px]">diversity_3</span>
+            </div>
+            <div>
+              <div class="font-semibold text-stone-900 mb-1">Economische Diversificatie</div>
+              <div class="text-stone-500 text-sm leading-relaxed">Van grondstoffen naar breedgedragen welvaart — met
+                focus op inclusie en duurzaamheid.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PPP Section -->
+      <div class="bg-[#1a1c1e] rounded-2xl p-10 lg:p-14 text-white mb-10">
+        <div class="max-w-2xl mb-10">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded text-[10px] font-bold text-[#d9cfb5] tracking-widest uppercase mb-4">
+            Publiek-Private Samenwerking</div>
+          <h3 class="font-['IBM_Plex_Serif',serif] text-2xl lg:text-3xl font-medium text-white mb-4">
+            Suriname open voor
+            internationaal kapitaal
+          </h3>
+          <p class="text-white/70 leading-relaxed">
+            Om publiek-private samenwerkingen en private-sector investeringen in Suriname te faciliteren, organiseren
+            wij forums, verstrekken we financiering om investeringsrisico's te mitigeren en faciliteren we
+            matchmaking-sessies.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white/8 border border-white/10 rounded-xl p-6">
+            <span class="material-symbols-outlined text-[#d9cfb5] text-3xl mb-4 block">forum</span>
+            <div class="font-semibold text-white mb-2">Investment Forums</div>
+            <div class="text-white/60 text-sm leading-relaxed">Wij organiseren gerichte forums waar internationale
+              investeerders en Surinaamse private sector elkaar ontmoeten.</div>
+          </div>
+          <div class="bg-white/8 border border-white/10 rounded-xl p-6">
+            <span class="material-symbols-outlined text-[#d9cfb5] text-3xl mb-4 block">finance</span>
+            <div class="font-semibold text-white mb-2">Risicofinanciering</div>
+            <div class="text-white/60 text-sm leading-relaxed">We verstrekken financiering die investeringsrisico's
+              verlaagt en de instap voor buitenlandse partijen vergemakkelijkt.</div>
+          </div>
+          <div class="bg-white/8 border border-white/10 rounded-xl p-6">
+            <span class="material-symbols-outlined text-[#d9cfb5] text-3xl mb-4 block">handshake</span>
+            <div class="font-semibold text-white mb-2">Matchmaking</div>
+            <div class="text-white/60 text-sm leading-relaxed">Directe koppelingen tussen projecteigenaren en
+              gekwalificeerde investeerders voor commercieel haalbare kansen.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bond CTA -->
+      <div class="text-center py-8">
+        <p class="text-stone-600 mb-6 max-w-xl mx-auto">Private-sector investeerders hebben via onze obligatielening een
+          betrouwbare manier om bij te dragen aan de welvaart, duurzaamheid en inclusie van Suriname.</p>
+        <a href="#inschrijven"
+          class="inline-flex items-center gap-2 bg-stone-950 hover:bg-stone-800 text-white font-semibold text-sm px-8 py-3.5 rounded transition-colors shadow-sm tab-link"
+          data-target="inschrijven">
+          <span>Bekijk de Obligatielening</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= INSTITUTIONAL FOOTER / SHARED COMPONENT ================= -->
+  <footer class="bg-primary text-on-primary border-t border-outline-variant mt-auto" id="contact"
+    style="background-color: rgb(14, 16, 19); border-top: 1px solid rgb(43, 46, 51);">
+    <div class="w-full px-margin-desktop py-space-xl max-w-[1360px] mx-auto flex flex-col gap-gutter">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 py-8 w-full">
+        <div
+          class="font-['IBM_Plex_Serif',serif] text-2xl lg:text-3xl font-medium tracking-tight text-white leading-tight max-w-xs">
+          Juliana Top Investment<br>N.V.</div>
+        <div class="text-body-sm font-body-sm font-semibold text-white/90">© 2026 Juliana Top Investment N.V. Private
+          &amp; Confidential.</div>
+        <div
+          class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-x-8 gap-y-2 text-body-sm font-body-sm">
+            <div class="flex items-center gap-6"><a
+              class="text-white font-medium hover:text-secondary-fixed underline underline-offset-4 transition-colors"
+              href="terms-of-use.html">Terms of Use</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <!-- ================= VIDEO MODAL ================= -->
+  <div id="video-modal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-primary/95 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+    <div class="relative w-full max-w-5xl mx-auto px-4 sm:px-6">
+      <!-- Close button -->
+      <button id="close-modal"
+        class="absolute -top-12 right-4 sm:right-6 text-white hover:text-secondary-fixed transition-colors">
+        <span class="material-symbols-outlined text-4xl">close</span>
+      </button>
+      <!-- Video container -->
+      <div class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-white/10">
+        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0"
+          title="Introductievideo" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  <script src="js/main.js"></script>
+  <script src="js/script.js"></script>
+</body>
